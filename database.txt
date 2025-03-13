@@ -1,0 +1,48 @@
+// DBML for simplified StackOverflow
+
+Table Users {
+  user_id integer [primary key]
+  username varchar [unique, not null]
+  email varchar [unique, not null]
+  password_hash varchar [not null]
+  score float [default: 0]
+  is_banned boolean [default: false]
+  created_at timestamp
+}
+
+Table Questions {
+  question_id integer [primary key]
+  author_id integer [not null]
+  title varchar [not null]
+  text text [not null]
+  image varchar
+  status varchar [default: 'received']
+  tags varchar
+  created_at timestamp
+}
+
+Table Answers {
+  answer_id integer [primary key]
+  question_id integer [not null]
+  author_id integer [not null]
+  text text [not null]
+  image varchar
+  created_at timestamp
+}
+
+Table Votes {
+  vote_id integer [primary key]
+  user_id integer [not null]
+  question_id integer
+  answer_id integer
+  vote_type varchar [not null] // 'upvote' or 'downvote'
+  created_at timestamp
+}
+
+// Relationships
+Ref: Questions.author_id > Users.user_id
+Ref: Answers.question_id > Questions.question_id
+Ref: Answers.author_id > Users.user_id
+Ref: Votes.user_id > Users.user_id
+Ref: Votes.question_id > Questions.question_id
+Ref: Votes.answer_id > Answers.answer_id
