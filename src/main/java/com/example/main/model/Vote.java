@@ -17,11 +17,11 @@ public class Vote {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "question_id", nullable = false)
+    @JoinColumn(name = "question_id", nullable = true)
     private Question question;
 
     @ManyToOne
-    @JoinColumn(name = "answer_id", nullable = false)
+    @JoinColumn(name = "answer_id", nullable = true)
     private Answer answer;
 
     @Column(nullable = false)

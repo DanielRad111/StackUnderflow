@@ -49,8 +49,8 @@ public class TagController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<TagDto> updateTag(@PathVariable Long id, @RequestBody Map<String, String> payload) {
-        String name = payload.get("name");
+    public ResponseEntity<TagDto> updateTag(@PathVariable Long id, @RequestBody Map<String, String> body) {
+        String name = body.get("name");
 
         if (name == null) {
             return ResponseEntity.badRequest().build();

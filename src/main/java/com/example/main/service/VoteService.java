@@ -99,6 +99,7 @@ public class VoteService {
             Vote vote = new Vote();
             vote.setUser(user);
             vote.setQuestion(question);
+            vote.setAnswer(null);
             vote.setVoteType(voteType);
 
             if("upvote".equals(voteType)) {
@@ -163,6 +164,7 @@ public class VoteService {
             // Create new vote
             Vote vote = new Vote();
             vote.setUser(user);
+            vote.setQuestion(null);
             vote.setAnswer(answer);
             vote.setVoteType(voteType);
 
