@@ -9,5 +9,4 @@ public class StackUnderflowApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StackUnderflowApplication.class, args);
 	}
-
 }
